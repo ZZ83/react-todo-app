@@ -195,6 +195,7 @@ const GlobalStyles = createGlobalStyle`
     /* Base styles */
     body {
         font-family: 'Josefin Sans', Arial, Helvetica, sans-serif;
+        background-color: ${(props) => props.theme.body};
     }
 
     img {

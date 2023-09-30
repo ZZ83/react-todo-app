@@ -1,14 +1,11 @@
 import styled from "styled-components";
+import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./components/GlobalStyles";
+import { useState } from "react";
 
 const log = () => {
-    console.log("Clicked");
+    alert("Clicked");
 };
-
-const Background = styled.div`
-    background-color: #ffffff;
-    height: 100vh;
-`;
 
 const Heading = styled.h1`
     color: red;
@@ -16,17 +13,38 @@ const Heading = styled.h1`
 
 const Button = styled.button`
     background-color: green;
+    cursor: pointer;
 `;
 
+const lightTheme = {
+    body: "lime",
+};
+
+const darkTheme = {
+    body: "#171823",
+};
+
 function App() {
+    const [theme, setTheme] = useState(lightTheme);
+
+    console.log(theme);
+
+    function changeTheme() {
+        if (theme === lightTheme) {
+            setTheme(darkTheme);
+        } else {
+            setTheme(lightTheme);
+        }
+    }
+
     return (
-        <>
-            <GlobalStyles />
-            <Background>
+        <ThemeProvider theme={theme}>
+            <>
+                <GlobalStyles />
                 <Heading>T O D O</Heading>
-                <Button onClick={log}>Click Me</Button>
-            </Background>
-        </>
+                <Button onClick={changeTheme}>Click Me</Button>
+            </>
+        </ThemeProvider>
     );
 }
 
