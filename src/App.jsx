@@ -3,11 +3,8 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./components/GlobalStyles";
 import { useState } from "react";
 import { BackgroundImage } from "./components/BackgroundImage";
-
-const Heading = styled.h1`
-    color: aqua;
-`;
-
+import { Header } from "./components/Header";
+import { Wrapper } from "./components/Wrapper";
 const Button = styled.button`
     background-color: orange;
     cursor: pointer;
@@ -39,9 +36,9 @@ function App() {
             <>
                 <GlobalStyles />
                 <BackgroundImage theme={theme} />
-
-                <Heading>T O D O</Heading>
-                <Button onClick={changeTheme}>Click Me</Button>
+                <Wrapper>
+                    <Header theme={theme} changeTheme={changeTheme} />
+                </Wrapper>
             </>
         </ThemeProvider>
     );

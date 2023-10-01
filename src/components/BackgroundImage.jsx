@@ -13,6 +13,7 @@ export const StyledBackgroundImage = styled.div`
     background-color: orange;
     position: absolute;
     z-index: -1;
+    top: 0;
 
     background-size: cover;
     background-position: center;

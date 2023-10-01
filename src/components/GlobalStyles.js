@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import JosefinSansReg from "../assets/fonts/josefin-sans-v32-latin-regular.woff2";
-import JosefinSansBold from "../assets/fonts/josefin-sans-v32-latin-700.woff2";
+import JostReg from "../assets/fonts/jost-v15-latin-regular.woff2";
+import JostBold from "../assets/fonts/jost-v15-latin-700.woff2";
 
 const GlobalStyles = createGlobalStyle`
     /* normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -187,22 +187,26 @@ const GlobalStyles = createGlobalStyle`
 
     /* Add font-face */
     @font-face {
-        font-family: 'Josefin Sans';
-        src: url(${JosefinSansReg})  format('woff2'),
-             url(${JosefinSansBold}) format('woff2');
+        font-family: 'Jost';
+        src: url(${JostReg})  format('woff2'),
+             url(${JostBold}) format('woff2');
     }
 
     /* Base styles */
     body {
         max-width: 1440px;
         margin: 0 auto;
-        font-family: 'Josefin Sans', Arial, Helvetica, sans-serif;
+        font-family: 'Jost', Arial, Helvetica, sans-serif;
         background-color: ${(props) => props.theme.body};
     }
 
     img {
         max-width: 100%;
         height: auto;
+    }
+
+    svg {
+        cursor: pointer;
     }
 `;
 
