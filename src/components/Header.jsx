@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Logo } from "./Logo";
-import SunIcon from "./SunIcon";
+import Logo from "./Logo";
+import ThemeIcon from "./ThemeIcon";
 
 const StyledHeader = styled.header`
     display: flex;
@@ -13,11 +13,13 @@ const StyledHeader = styled.header`
     }
 `;
 
-export const Header = ({ theme, changeTheme }) => {
+function Header({ theme, changeTheme }) {
     return (
         <StyledHeader>
             <Logo />
-            <SunIcon theme={theme} changeTheme={changeTheme}></SunIcon>
+            <ThemeIcon theme={theme} changeTheme={changeTheme}></ThemeIcon>
         </StyledHeader>
     );
-};
+}
+
+export default Header;

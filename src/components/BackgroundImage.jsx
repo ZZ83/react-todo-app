@@ -25,6 +25,8 @@ export const StyledBackgroundImage = styled.div`
     }
 `;
 
-export function BackgroundImage() {
+function BackgroundImage() {
     return <StyledBackgroundImage />;
 }
+
+export default BackgroundImage;

@@ -197,7 +197,7 @@ const GlobalStyles = createGlobalStyle`
         max-width: 1440px;
         margin: 0 auto;
         font-family: 'Jost', Arial, Helvetica, sans-serif;
-        background-color: ${(props) => props.theme.body};
+        background-color: ${(props) => props.theme.primaryBG};
     }
 
     img {

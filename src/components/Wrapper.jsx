@@ -6,6 +6,8 @@ const StyledWrapper = styled.div`
     margin: 0 auto;
 `;
 
-export const Wrapper = ({ children }) => {
+function Wrapper({ children }) {
     return <StyledWrapper>{children}</StyledWrapper>;
-};
+}
+
+export default Wrapper;
