@@ -47,8 +47,8 @@ function App() {
                 <Header theme={theme} changeTheme={changeTheme} />
                 <AddItem todo={todo} setTodo={setTodo} />
                 <ul>
-                    {todo.map((todo) => (
-                        <TodoItems text={todo} />
+                    {todo.map((todos, index) => (
+                        <TodoItems key={index} index={index} todo={todo} text={todos} setTodo={setTodo} />
                     ))}
                 </ul>
             </Wrapper>

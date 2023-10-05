@@ -50,7 +50,6 @@ function AddItem({ todo, setTodo }) {
                     if (event.key === "Enter") {
                         let t = event.target.value;
                         setTodo([...todo, t]);
-
                         event.target.value = "";
                     }
                 }}

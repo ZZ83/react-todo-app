@@ -26,12 +26,12 @@ const StyledTodo = styled.li`
     }
 `;
 
-function TodoItems(props) {
+function TodoItems({ text, todo, index, setTodo }) {
     return (
         <StyledTodo draggable="true">
             <CheckBox />
-            <p>{props.text}</p>
-            <CloseButton />
+            <p>{text}</p>
+            <CloseButton todo={todo} setTodo={setTodo} index={index} />
         </StyledTodo>
     );
 }
