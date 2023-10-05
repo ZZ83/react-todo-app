@@ -26,21 +26,13 @@ const StyledTodo = styled.li`
     }
 `;
 
-function TodoItems() {
+function TodoItems(props) {
     return (
-        <ul>
-            <StyledTodo draggable="true">
-                <CheckBox />
-                <p>Complete Todo App on Frontend Mentor</p>
-                <CloseButton />
-            </StyledTodo>
-
-            <StyledTodo>
-                <CheckBox />
-                <p>Jog around the park 3x</p>
-                <CloseButton />
-            </StyledTodo>
-        </ul>
+        <StyledTodo draggable="true">
+            <CheckBox />
+            <p>{props.text}</p>
+            <CloseButton />
+        </StyledTodo>
     );
 }
 

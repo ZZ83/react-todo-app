@@ -31,12 +31,6 @@ function App() {
 
     const [todo, setTodo] = useState([]);
 
-    console.log(todo);
-
-    function addTodo(item) {
-        setTodo([...item]);
-    }
-
     function changeTheme() {
         if (theme === themes.lightTheme) {
             setTheme(themes.darkTheme);
@@ -52,7 +46,11 @@ function App() {
             <Wrapper>
                 <Header theme={theme} changeTheme={changeTheme} />
                 <AddItem todo={todo} setTodo={setTodo} />
-                <TodoItems />
+                <ul>
+                    {todo.map((todo) => (
+                        <TodoItems text={todo} />
+                    ))}
+                </ul>
             </Wrapper>
         </ThemeProvider>
     );
