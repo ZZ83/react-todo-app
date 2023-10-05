@@ -156,7 +156,7 @@ const GlobalStyles = createGlobalStyle`
     h1, h2, h3, h4, h5, h6,
     p, blockquote, pre,
     dl, dd, ol, ul,
-    form, fieldset, legend,
+    form, input, fieldset, legend,
     figure,
     table, th, td, caption,
     hr {
@@ -198,6 +198,20 @@ const GlobalStyles = createGlobalStyle`
         margin: 0 auto;
         font-family: 'Jost', Arial, Helvetica, sans-serif;
         background-color: ${(props) => props.theme.primaryBG};
+        color: ${(props) => props.theme.primaryColor};
+    }
+
+    p {
+        padding-left: 12px;
+        padding-right: 12px;
+        font-size: 14px;
+        letter-spacing: -0.17px;
+        @media (min-width: 588px) {
+            padding-left: 24px;
+            padding-right: 24px;
+            font-size: 18px;
+            letter-spacing: -0.25px;
+        }
     }
 
     img {

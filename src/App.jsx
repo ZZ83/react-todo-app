@@ -5,6 +5,7 @@ import BackgroundImage from "./components/BackgroundImage";
 import Wrapper from "./components/Wrapper";
 import Header from "./components/Header";
 import AddItem from "./components/AddItem";
+import TodoItems from "./components/TodoItems";
 
 const themes = {
     lightTheme: {
@@ -26,7 +27,15 @@ const themes = {
 };
 
 function App() {
-    const [theme, setTheme] = useState(themes.darkTheme);
+    const [theme, setTheme] = useState(themes.lightTheme);
+
+    const [todo, setTodo] = useState([]);
+
+    console.log(todo);
+
+    function addTodo(item) {
+        setTodo([...item]);
+    }
 
     function changeTheme() {
         if (theme === themes.lightTheme) {
@@ -42,7 +51,8 @@ function App() {
             <BackgroundImage />
             <Wrapper>
                 <Header theme={theme} changeTheme={changeTheme} />
-                <AddItem />
+                <AddItem todo={todo} setTodo={setTodo} />
+                <TodoItems />
             </Wrapper>
         </ThemeProvider>
     );

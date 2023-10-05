@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import CheckBox from "./Checkbox";
 
 const StyledAddItem = styled.div`
     border-radius: 5px;
     background-color: ${(props) => props.theme.secondaryBG};
     padding: 0 20px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 20px 1fr;
     align-items: center;
     margin-top: 40px;
     margin-bottom: 16px;
@@ -15,43 +17,44 @@ const StyledAddItem = styled.div`
         margin-top: 48px;
         margin-bottom: 24px;
         padding: 0 24px;
-    }
-`;
-
-const StyledCheckBox = styled.div`
-    width: 20px;
-    height: 20px;
-    margin-right: 12px;
-    border-radius: 50%;
-    border: 1px solid ${(props) => props.theme.accentColor};
-    @media (min-width: 588px) {
-        width: 24px;
-        height: 24px;
-        margin-right: 24px;
+        grid-template-columns: 24px 1fr;
     }
 `;
 
 const StyledInput = styled.input`
     border: 0;
     outline: 0;
-    width: 90%;
+
+    padding-left: 12px;
+
     letter-spacing: -0.17px;
-    color: ${(props) => props.theme.primaryColor};
+    color: inherit;
     height: 48px;
-    font-size: 12px;
+    font-size: 14px;
     background-color: transparent;
     @media (min-width: 588px) {
         height: 64px;
         font-size: 18px;
         letter-spacing: -0.25px;
+        padding-left: 24px;
     }
 `;
 
-function AddItem() {
+function AddItem({ todo, setTodo }) {
     return (
         <StyledAddItem>
-            <StyledCheckBox />
-            <StyledInput placeholder="Create a new todo..." />
+            <CheckBox />
+            <StyledInput
+                placeholder="Create a new todo..."
+                onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                        let t = event.target.value;
+                        setTodo([...todo, t]);
+
+                        event.target.value = "";
+                    }
+                }}
+            />
         </StyledAddItem>
     );
 }
