@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CheckBox from "./Checkbox";
+import { DefautCheckBox } from "./Checkbox";
 
 const StyledAddItem = styled.div`
     border-radius: 5px;
@@ -43,7 +43,7 @@ const StyledInput = styled.input`
 function AddItem({ todo, setTodo }) {
     return (
         <StyledAddItem>
-            <CheckBox />
+            <DefautCheckBox />
             <StyledInput
                 placeholder="Create a new todo..."
                 onKeyDown={(event) => {

@@ -6,7 +6,8 @@ import Wrapper from "./components/Wrapper";
 import Header from "./components/Header";
 import AddItem from "./components/AddItem";
 import TodoItems from "./components/TodoItems";
-import CheckBox from "./components/Checkbox";
+
+import { StateCheckBox } from "./components/Checkbox";
 import CloseButton from "./components/CloseButton";
 
 const themes = {
@@ -51,7 +52,7 @@ function App() {
                 <ul>
                     {todo.map((text, index) => (
                         <TodoItems key={crypto.randomUUID()}>
-                            <CheckBox />
+                            <StateCheckBox />
                             <p>{text}</p>
                             <CloseButton todo={todo} index={index} setTodo={setTodo} />
                         </TodoItems>

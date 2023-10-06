@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledCheckBox = styled.div`
+const StyledDefaultCheckBox = styled.div`
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -11,8 +11,21 @@ const StyledCheckBox = styled.div`
     }
 `;
 
-function CheckBox() {
-    return <StyledCheckBox />;
+const StyledStateCheckBox = styled(StyledDefaultCheckBox)`
+    cursor: pointer;
+    &:hover {
+        border: double 1px transparent;
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        background-image: linear-gradient(${(props) => props.theme.secondaryBG}, ${(props) => props.theme.secondaryBG}),
+            radial-gradient(circle at top left, #55ddff, #c058f3);
+    }
+`;
+
+export function DefautCheckBox() {
+    return <StyledDefaultCheckBox />;
 }
 
-export default CheckBox;
+export function StateCheckBox() {
+    return <StyledStateCheckBox />;
+}
