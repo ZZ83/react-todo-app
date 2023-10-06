@@ -6,6 +6,8 @@ import Wrapper from "./components/Wrapper";
 import Header from "./components/Header";
 import AddItem from "./components/AddItem";
 import TodoItems from "./components/TodoItems";
+import CheckBox from "./components/Checkbox";
+import CloseButton from "./components/CloseButton";
 
 const themes = {
     lightTheme: {
@@ -47,8 +49,12 @@ function App() {
                 <Header theme={theme} changeTheme={changeTheme} />
                 <AddItem todo={todo} setTodo={setTodo} />
                 <ul>
-                    {todo.map((todos, index) => (
-                        <TodoItems key={index} index={index} todo={todo} text={todos} setTodo={setTodo} />
+                    {todo.map((text, index) => (
+                        <TodoItems key={crypto.randomUUID()}>
+                            <CheckBox />
+                            <p>{text}</p>
+                            <CloseButton todo={todo} index={index} setTodo={setTodo} />
+                        </TodoItems>
                     ))}
                 </ul>
             </Wrapper>

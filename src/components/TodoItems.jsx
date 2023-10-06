@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import CheckBox from "./Checkbox";
-import CloseButton from "./CloseButton";
 
 const StyledTodo = styled.li`
     display: grid;
@@ -26,14 +24,8 @@ const StyledTodo = styled.li`
     }
 `;
 
-function TodoItems({ text, todo, index, setTodo }) {
-    return (
-        <StyledTodo draggable="true">
-            <CheckBox />
-            <p>{text}</p>
-            <CloseButton todo={todo} setTodo={setTodo} index={index} />
-        </StyledTodo>
-    );
+function TodoItems({ children }) {
+    return <StyledTodo draggable="true">{children}</StyledTodo>;
 }
 
 export default TodoItems;

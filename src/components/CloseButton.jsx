@@ -18,10 +18,9 @@ function CloseButton({ todo, index, setTodo }) {
             viewBox="0 0 18 18"
             role="button"
             onClick={() => {
-                const pre = [...todo];
-                pre.splice(index, 1);
-                setTodo([...pre]);
-                console.log(pre);
+                const prev = [...todo];
+                prev.splice(index, 1);
+                setTodo([...prev]);
             }}
         >
             <path
