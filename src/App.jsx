@@ -6,6 +6,7 @@ import Wrapper from "./components/Wrapper";
 import Header from "./components/Header";
 import AddItem from "./components/AddItem";
 import TodoItems from "./components/TodoItems";
+import TodoText from "./components/TodoText";
 
 import { StateCheckBox } from "./components/Checkbox";
 import CloseButton from "./components/CloseButton";
@@ -34,6 +35,17 @@ function App() {
 
     const [todo, setTodo] = useState([]);
 
+    function toggleCompleted(index) {
+        const item = [...todo];
+        if (todo[index].completed === false) {
+            item[index].completed = true;
+            setTodo([...item]);
+        } else {
+            item[index].completed = false;
+            setTodo([...item]);
+        }
+    }
+
     function changeTheme() {
         if (theme === themes.lightTheme) {
             setTheme(themes.darkTheme);
@@ -50,10 +62,12 @@ function App() {
                 <Header theme={theme} changeTheme={changeTheme} />
                 <AddItem todo={todo} setTodo={setTodo} />
                 <ul>
-                    {todo.map((text, index) => (
+                    {todo.map((obj, index) => (
                         <TodoItems key={crypto.randomUUID()}>
-                            <StateCheckBox />
-                            <p>{text}</p>
+                            <StateCheckBox active={obj.completed} index={index} toggleCompleted={toggleCompleted} />
+
+                            <TodoText completed={obj.completed}>{obj.text}</TodoText>
+
                             <CloseButton todo={todo} index={index} setTodo={setTodo} />
                         </TodoItems>
                     ))}

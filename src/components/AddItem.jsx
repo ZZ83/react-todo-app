@@ -49,7 +49,12 @@ function AddItem({ todo, setTodo }) {
                 onKeyDown={(event) => {
                     if (event.key === "Enter") {
                         let t = event.target.value;
-                        setTodo([...todo, t]);
+                        const obj = {
+                            text: t,
+                            completed: false,
+                        };
+                        setTodo([...todo, obj]);
+
                         event.target.value = "";
                     }
                 }}

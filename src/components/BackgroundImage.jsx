@@ -18,9 +18,9 @@ export const StyledBackgroundImage = styled.div`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(${(props) => (props.theme.bg === "light" ? bgMobileLight : bgMobileDark)});
+    background-image: url(${({ theme }) => (theme.bg === "light" ? bgMobileLight : bgMobileDark)});
     @media (min-width: 588px) {
-        background-image: url(${(props) => (props.theme.bg === "light" ? bgDesktopLight : bgDesktopDark)});
+        background-image: url(${({ theme }) => (theme.bg === "light" ? bgDesktopLight : bgDesktopDark)});
         height: 300px;
     }
 `;

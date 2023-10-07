@@ -201,19 +201,6 @@ const GlobalStyles = createGlobalStyle`
         color: ${(props) => props.theme.primaryColor};
     }
 
-    p {
-        padding-left: 12px;
-        padding-right: 12px;
-        font-size: 14px;
-        letter-spacing: -0.17px;
-        @media (min-width: 588px) {
-            padding-left: 24px;
-            padding-right: 24px;
-            font-size: 18px;
-            letter-spacing: -0.25px;
-        }
-    }
-
     img {
         max-width: 100%;
         height: auto;
