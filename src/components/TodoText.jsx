@@ -13,7 +13,7 @@ const StyleTodoText = styled.p`
     }
 
     text-decoration: ${({ $completed }) => ($completed ? "line-through" : "none")};
-    color: ${({ $completed }) => ($completed ? "line-through" : "none")};
+    color: ${({ $completed, theme }) => ($completed ? theme.lineThroughColor : null)};
 `;
 
 function TodoText({ completed, children }) {

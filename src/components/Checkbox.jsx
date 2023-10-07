@@ -5,7 +5,7 @@ const StyledDefaultCheckBox = styled.div(
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        border: 1px solid ${theme.primaryColor};
+        border: 1px solid ${theme.accentColor};
         @media (min-width: 588px) {
             width: 24px;
             height: 24px;
@@ -13,25 +13,26 @@ const StyledDefaultCheckBox = styled.div(
     `
 );
 
-const StyledStateCheckBox = styled(StyledDefaultCheckBox)`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    &:hover {
-        border: ${({ $active }) => ($active ? null : "double 1px transparent")};
-        background-origin: ${({ $active }) => ($active ? null : "border-box")};
-        background-clip: ${({ $active }) => ($active ? null : "content-box, border-box")};
-        background-image: ${({ theme, $active }) =>
-            $active
-                ? null
-                : `linear-gradient(${theme.secondaryBG}, ${theme.secondaryBG}), linear-gradient(to bottom right, #55ddff, #c058f3)`};
-    }
+const StyledStateCheckBox = styled(StyledDefaultCheckBox)(
+    ({ theme, $active }) => css`
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        &:hover {
+            border: ${$active ? null : "double 1px transparent"};
+            background-origin: ${$active ? null : "border-box"};
+            background-clip: ${$active ? null : "content-box, border-box"};
+            background-image: ${!$active
+                ? `linear-gradient(${theme.secondaryBG}, ${theme.secondaryBG}), linear-gradient(to bottom right, #55ddff, #c058f3)`
+                : null};
+        }
 
-    border: ${({ $active }) => ($active ? "none" : null)};
+        border: ${({ $active }) => ($active ? "none" : null)};
 
-    background: ${({ $active }) => ($active ? "linear-gradient(to bottom right, #55ddff, #c058f3)" : null)};
-`;
+        background: ${({ $active }) => ($active ? "linear-gradient(to bottom right, #55ddff, #c058f3)" : null)};
+    `
+);
 
 export function DefautCheckBox() {
     return <StyledDefaultCheckBox />;
@@ -50,24 +51,3 @@ export function StateCheckBox({ index, active, toggleCompleted }) {
         );
     }
 }
-
-// const StyledStateCheckBox = styled(StyledDefaultCheckBox)(
-//     ({ theme, $active }) => css`
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         cursor: pointer;
-//         &:hover {
-//             border: ${$active ? null : "double 1px transparent"};
-//             background-origin: ${$active ? null : "border-box"};
-//             background-clip: ${$active ? null : "content-box, border-box"};
-//             background-image: ${!$active
-//                 ? `linear-gradient(${theme.secondaryBG}, ${theme.secondaryBG}), linear-gradient(to bottom right, #55ddff, #c058f3)`
-//                 : null};
-//         }
-
-//         border: ${({ $active }) => ($active ? "none" : null)};
-
-//         background: ${({ $active }) => ($active ? "linear-gradient(to bottom right, #55ddff, #c058f3)" : null)};
-//     `
-// );
