@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import AddItem from "./components/AddItem";
 import TodoItems from "./components/TodoItems";
 import TodoText from "./components/TodoText";
+import Tracker from "./components/Tracker";
 
 import { StateCheckBox } from "./components/Checkbox";
 import CloseButton from "./components/CloseButton";
@@ -19,6 +20,7 @@ const themes = {
         secondaryColor: "#9495A5",
         accentColor: "#E3E4F1",
         lineThroughColor: "#D1D2DA",
+        hover: "#494C6B",
         bg: "light",
     },
     darkTheme: {
@@ -28,6 +30,7 @@ const themes = {
         secondaryColor: "#767992",
         accentColor: "#393A4B",
         lineThroughColor: "#4D5067",
+        hover: "#E3E4F1",
         bg: "dark",
     },
 };
@@ -74,6 +77,7 @@ function App() {
                         </TodoItems>
                     ))}
                 </ul>
+                <Tracker todo={todo} />
             </Wrapper>
         </ThemeProvider>
     );

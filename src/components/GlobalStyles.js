@@ -209,6 +209,11 @@ const GlobalStyles = createGlobalStyle`
     svg {
         cursor: pointer;
     }
+
+    button {
+        background: none;
+        border: none;
+    }
 `;
 
 export default GlobalStyles;
