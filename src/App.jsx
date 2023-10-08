@@ -77,7 +77,7 @@ function App() {
                         </TodoItems>
                     ))}
                 </ul>
-                <Tracker todo={todo} />
+                <Tracker todo={todo} setTodo={setTodo} />
             </Wrapper>
         </ThemeProvider>
     );

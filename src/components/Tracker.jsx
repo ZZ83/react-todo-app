@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import Button from "./Button";
+import { ClearButton } from "./Button";
 
 const StyledTracker = styled.div(
     ({ theme }) => css`
@@ -51,8 +52,12 @@ const StyledSort = styled.div(
     `
 );
 
-function Tracker({ todo }) {
+function Tracker({ todo, setTodo }) {
     const itemsLeft = [...todo].filter((item) => item.completed === false);
+
+    function removeCompleted() {
+        setTodo([...itemsLeft]);
+    }
 
     return (
         <StyledTracker>
@@ -62,7 +67,7 @@ function Tracker({ todo }) {
                 <Button>Active</Button>
                 <Button>Completed</Button>
             </StyledSort>
-            <Button $test>Clear Completed</Button>
+            <ClearButton removeCompleted={removeCompleted}>Clear Completed</ClearButton>
         </StyledTracker>
     );
 }
