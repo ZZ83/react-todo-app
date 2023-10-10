@@ -40,7 +40,7 @@ const StyledInput = styled.input`
     }
 `;
 
-function AddItem({ todo, setTodo }) {
+function AddItem({ original, setOriginal, todo, setTodo }) {
     return (
         <StyledAddItem>
             <DefautCheckBox />
@@ -50,11 +50,12 @@ function AddItem({ todo, setTodo }) {
                     if (event.key === "Enter") {
                         let t = event.target.value;
                         const obj = {
+                            id: crypto.randomUUID(),
                             text: t,
                             completed: false,
                         };
+                        setOriginal([...original, obj]);
                         setTodo([...todo, obj]);
-
                         event.target.value = "";
                     }
                 }}

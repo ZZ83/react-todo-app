@@ -37,8 +37,9 @@ const themes = {
 
 function App() {
     const [theme, setTheme] = useState(themes.lightTheme);
-
+    const [original, setOriginal] = useState([]);
     const [todo, setTodo] = useState([]);
+    const [sort, setSort] = useState({ all: true, active: false, completed: false });
 
     function toggleCompleted(index) {
         const item = [...todo];
@@ -58,6 +59,8 @@ function App() {
             setTheme(themes.lightTheme);
         }
     }
+    // console.log("Todo: ", todo);
+    // console.log("Original:", original);
 
     return (
         <ThemeProvider theme={theme}>
@@ -65,19 +68,32 @@ function App() {
             <BackgroundImage />
             <Wrapper>
                 <Header theme={theme} changeTheme={changeTheme} />
-                <AddItem todo={todo} setTodo={setTodo} />
+                <AddItem original={original} setOriginal={setOriginal} todo={todo} setTodo={setTodo} />
                 <ul>
                     {todo.map((obj, index) => (
-                        <TodoItems key={crypto.randomUUID()}>
+                        <TodoItems key={obj.id}>
                             <StateCheckBox active={obj.completed} index={index} toggleCompleted={toggleCompleted} />
 
                             <TodoText completed={obj.completed}>{obj.text}</TodoText>
 
-                            <CloseButton todo={todo} index={index} setTodo={setTodo} />
+                            <CloseButton
+                                id={obj.id}
+                                sort={sort}
+                                original={original}
+                                setOriginal={setOriginal}
+                                todo={todo}
+                                setTodo={setTodo}
+                            />
                         </TodoItems>
                     ))}
                 </ul>
-                <Tracker todo={todo} setTodo={setTodo} />
+                <Tracker
+                    sort={sort}
+                    setSort={setSort}
+                    original={original}
+                    setOriginal={setOriginal}
+                    setTodo={setTodo}
+                />
             </Wrapper>
         </ThemeProvider>
     );

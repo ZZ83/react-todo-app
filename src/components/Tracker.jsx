@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import Button from "./Button";
-import { ClearButton } from "./Button";
 
 const StyledTracker = styled.div(
     ({ theme }) => css`
@@ -52,22 +51,55 @@ const StyledSort = styled.div(
     `
 );
 
-function Tracker({ todo, setTodo }) {
-    const itemsLeft = [...todo].filter((item) => item.completed === false);
+function Tracker({ sort, setSort, original, setOriginal, setTodo }) {
+    const all = { ...sort };
+    const activeTodos = [...original].filter((item) => item.completed === false);
+    const completedTodos = [...original].filter((item) => item.completed === true);
 
-    function removeCompleted() {
-        setTodo([...itemsLeft]);
+    function showAllTodos() {
+        setTodo([...original]);
+        all.all = true;
+        all.active = false;
+        all.completed = false;
+        setSort({ ...all });
+    }
+
+    function showActiveTodos() {
+        setTodo([...activeTodos]);
+        all.all = false;
+        all.active = true;
+        all.completed = false;
+        setSort({ ...all });
+    }
+
+    function showCompletedTodos() {
+        setTodo([...completedTodos]);
+        all.all = false;
+        all.active = false;
+        all.completed = true;
+        setSort({ ...all });
+    }
+
+    function removeCompletedTodos() {
+        setOriginal([...activeTodos]);
+        setTodo([...activeTodos]);
     }
 
     return (
         <StyledTracker>
-            <span>{itemsLeft.length} Items Left</span>
+            <span>{activeTodos.length} Items Left</span>
             <StyledSort>
-                <Button>All</Button>
-                <Button>Active</Button>
-                <Button>Completed</Button>
+                <Button $active={all.all} onPress={showAllTodos}>
+                    All
+                </Button>
+                <Button $active={all.active} onPress={showActiveTodos}>
+                    Active
+                </Button>
+                <Button $active={all.completed} onPress={showCompletedTodos}>
+                    Completed
+                </Button>
             </StyledSort>
-            <ClearButton removeCompleted={removeCompleted}>Clear Completed</ClearButton>
+            <Button onPress={removeCompletedTodos}>Clear Completed</Button>
         </StyledTracker>
     );
 }

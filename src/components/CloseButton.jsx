@@ -11,16 +11,27 @@ const StyledCloseButton = styled.svg`
     }
 `;
 
-function CloseButton({ todo, index, setTodo }) {
+function CloseButton({ id, sort, original, setOriginal, todo, setTodo }) {
+    function removeItem(items, id) {
+        return items.filter((item) => item.id !== id);
+    }
+
     return (
         <StyledCloseButton
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 18 18"
             role="button"
             onClick={() => {
-                const prev = [...todo];
-                prev.splice(index, 1);
-                setTodo([...prev]);
+                if (sort.all === true) {
+                    const prev = removeItem([...original], id);
+                    setOriginal([...prev]);
+                    setTodo([...prev]);
+                } else {
+                    const prev = removeItem([...original], id);
+                    const prevIt = removeItem([...todo], id);
+                    setOriginal([...prev]);
+                    setTodo([...prevIt]);
+                }
             }}
         >
             <path
