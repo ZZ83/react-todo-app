@@ -69,7 +69,7 @@ function App() {
                 <AddItem original={original} setOriginal={setOriginal} todo={todo} setTodo={setTodo} />
                 <ul>
                     {todo.map((obj, index) => (
-                        <TodoItems key={obj.id}>
+                        <TodoItems key={obj.id} draggable>
                             <StateCheckBox active={obj.completed} index={index} toggleCompleted={toggleCompleted} />
 
                             <TodoText completed={obj.completed}>{obj.text}</TodoText>
