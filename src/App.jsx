@@ -59,8 +59,6 @@ function App() {
             setTheme(themes.lightTheme);
         }
     }
-    // console.log("Todo: ", todo);
-    // console.log("Original:", original);
 
     return (
         <ThemeProvider theme={theme}>

@@ -81,8 +81,13 @@ function Tracker({ sort, setSort, original, setOriginal, setTodo }) {
     }
 
     function removeCompletedTodos() {
-        setOriginal([...activeTodos]);
-        setTodo([...activeTodos]);
+        if (all.completed === true) {
+            setOriginal([...activeTodos]);
+            setTodo([]);
+        } else {
+            setOriginal([...activeTodos]);
+            setTodo([...activeTodos]);
+        }
     }
 
     return (
