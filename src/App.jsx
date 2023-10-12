@@ -4,7 +4,7 @@ import GlobalStyles from "./components/GlobalStyles";
 import BackgroundImage from "./components/BackgroundImage";
 import Wrapper from "./components/Wrapper";
 import Header from "./components/Header";
-import AddItem from "./components/AddItem";
+import CreateTodo from "./components/CreateTodo";
 import TodoItems from "./components/TodoItems";
 import TodoText from "./components/TodoText";
 import Tracker from "./components/Tracker";
@@ -66,7 +66,7 @@ function App() {
             <BackgroundImage />
             <Wrapper>
                 <Header theme={theme} changeTheme={changeTheme} />
-                <AddItem original={original} setOriginal={setOriginal} todo={todo} setTodo={setTodo} />
+                <CreateTodo original={original} setOriginal={setOriginal} todo={todo} setTodo={setTodo} />
                 <ul>
                     {todo.map((obj, index) => (
                         <TodoItems key={obj.id} draggable>
