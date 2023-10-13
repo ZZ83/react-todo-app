@@ -1,23 +1,25 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const StyleTodoText = styled.p`
-    padding-left: 12px;
-    padding-right: 12px;
-    font-size: 14px;
-    letter-spacing: -0.17px;
-    @media (min-width: 588px) {
-        padding-left: 24px;
-        padding-right: 24px;
-        font-size: 18px;
-        letter-spacing: -0.25px;
-    }
+const $TodoText = styled.p(
+    ({ theme, $completed }) => css`
+        padding-right: 12px;
+        padding-left: 12px;
+        font-size: 14px;
+        color: ${$completed ? theme.lineThroughColor : null};
+        text-decoration: ${$completed ? "line-through" : "none"};
+        letter-spacing: -0.17px;
 
-    text-decoration: ${({ $completed }) => ($completed ? "line-through" : "none")};
-    color: ${({ $completed, theme }) => ($completed ? theme.lineThroughColor : null)};
-`;
+        @media (width >= 588px) {
+            padding-right: 24px;
+            padding-left: 24px;
+            font-size: 18px;
+            letter-spacing: -0.25px;
+        }
+    `
+);
 
 function TodoText({ completed, children }) {
-    return <StyleTodoText $completed={completed}>{children}</StyleTodoText>;
+    return <$TodoText $completed={completed}>{children}</$TodoText>;
 }
 
 export default TodoText;
