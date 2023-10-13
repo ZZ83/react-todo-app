@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DefautCheckBox } from "./Checkbox";
+import { StaticCheckBox } from "./Checkbox";
 
 const $CreateTodo = styled.div`
     display: grid;
@@ -56,7 +56,7 @@ function CreateTodo({ original, setOriginal, todo, setTodo }) {
 
     return (
         <$CreateTodo>
-            <DefautCheckBox />
+            <StaticCheckBox />
             <$Input onKeyDown={(event) => addTodoItem(event)} placeholder="Create a new todo..." />
         </$CreateTodo>
     );

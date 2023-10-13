@@ -9,7 +9,7 @@ import TodoItems from "./components/TodoItems";
 import TodoText from "./components/TodoText";
 import Tracker from "./components/Tracker";
 
-import { StateCheckBox } from "./components/Checkbox";
+import { DynamicCheckBox } from "./components/Checkbox";
 import CloseButton from "./components/CloseButton";
 
 const themes = {
@@ -70,7 +70,7 @@ function App() {
                 <ul>
                     {todo.map((obj, index) => (
                         <TodoItems key={obj.id} draggable>
-                            <StateCheckBox active={obj.completed} index={index} toggleCompleted={toggleCompleted} />
+                            <DynamicCheckBox active={obj.completed} index={index} toggleCompleted={toggleCompleted} />
 
                             <TodoText completed={obj.completed}>{obj.text}</TodoText>
 
