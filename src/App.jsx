@@ -5,7 +5,7 @@ import BackgroundImage from "./components/BackgroundImage";
 import Wrapper from "./components/Wrapper";
 import Header from "./components/Header";
 import CreateTodo from "./components/CreateTodo";
-import TodoItems from "./components/TodoItems";
+import TodoItem from "./components/TodoItem";
 import TodoText from "./components/TodoText";
 import Tracker from "./components/Tracker";
 
@@ -69,7 +69,7 @@ function App() {
                 <CreateTodo original={original} setOriginal={setOriginal} todo={todo} setTodo={setTodo} />
                 <ul>
                     {todo.map((obj, index) => (
-                        <TodoItems key={obj.id} draggable>
+                        <TodoItem key={obj.id}>
                             <DynamicCheckBox active={obj.completed} index={index} toggleCompleted={toggleCompleted} />
 
                             <TodoText completed={obj.completed}>{obj.text}</TodoText>
@@ -82,7 +82,7 @@ function App() {
                                 todo={todo}
                                 setTodo={setTodo}
                             />
-                        </TodoItems>
+                        </TodoItem>
                     ))}
                 </ul>
                 <Tracker
