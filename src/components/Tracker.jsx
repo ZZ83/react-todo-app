@@ -1,52 +1,54 @@
 import styled, { css } from "styled-components";
 import Button from "./Button";
 
-const StyledTracker = styled.div(
+const $Tracker = styled.div(
     ({ theme }) => css`
+        position: relative;
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        height: 53px;
+        padding-right: 20px;
+        padding-left: 20px;
         font-size: 14px;
         color: ${theme.secondaryColor};
-        justify-content: space-between;
         background-color: ${theme.secondaryBG};
-        height: 53px;
-        padding-left: 20px;
-        padding-right: 20px;
         border-radius: 0 0 5px 5px;
-        @media (min-width: 588px) {
+
+        @media (width >= 588px) {
             height: 64px;
-            padding-left: 24px;
             padding-right: 24px;
+            padding-left: 24px;
         }
-        position: relative;
     `
 );
 
-const StyledSort = styled.div(
+const $Sort = styled.div(
     ({ theme }) => css`
-        left: 0;
-        right: 0;
-        top: 0;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 5px;
-        display: flex;
-        justify-content: center;
         position: absolute;
-        margin-top: 69px;
+        top: 0;
+        right: 0;
+        left: 0;
+        display: flex;
         gap: 18px;
-        background-color: ${theme.secondaryBG};
+        justify-content: center;
+        width: 100%;
         height: 53px;
         padding: 0 20px;
-        @media only screen and (min-width: 588px) {
+        margin-top: 69px;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: ${theme.secondaryBG};
+        border-radius: 5px;
+
+        @media only screen and (width >= 588px) {
             position: initial;
             justify-content: space-between;
-            background-color: transparent;
-            margin-top: 0;
-            height: 64px;
             width: 166px;
+            height: 64px;
             padding: 0;
+            margin-top: 0;
+            background-color: transparent;
         }
     `
 );
@@ -91,9 +93,9 @@ function Tracker({ sort, setSort, original, setOriginal, setTodo }) {
     }
 
     return (
-        <StyledTracker>
+        <$Tracker>
             <span>{activeTodos.length} Items Left</span>
-            <StyledSort>
+            <$Sort>
                 <Button $active={all.all} onPress={showAllTodos}>
                     All
                 </Button>
@@ -103,9 +105,9 @@ function Tracker({ sort, setSort, original, setOriginal, setTodo }) {
                 <Button $active={all.completed} onPress={showCompletedTodos}>
                     Completed
                 </Button>
-            </StyledSort>
+            </$Sort>
             <Button onPress={removeCompletedTodos}>Clear Completed</Button>
-        </StyledTracker>
+        </$Tracker>
     );
 }
 
