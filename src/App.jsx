@@ -10,7 +10,7 @@ import TodoText from "./components/TodoText";
 import Tracker from "./components/Tracker";
 
 import { DynamicCheckBox } from "./components/Checkbox";
-import CloseButton from "./components/CloseButton";
+import RemoveTodoButton from "./components/RemoveTodoButton";
 
 const themes = {
     lightTheme: {
@@ -74,7 +74,7 @@ function App() {
 
                             <TodoText completed={obj.completed}>{obj.text}</TodoText>
 
-                            <CloseButton
+                            <RemoveTodoButton
                                 id={obj.id}
                                 sort={sort}
                                 original={original}
