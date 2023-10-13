@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components";
 
-const StyledButton = styled.button(
+const $Button = styled.button(
     ({ theme, $active }) => css`
-        cursor: pointer;
         padding: 0;
         font-weight: 700;
         color: ${$active ? "#3A7CFD" : `${theme.secondaryColor}`};
+        cursor: pointer;
+
         &:hover {
             color: ${theme.hover};
         }
@@ -14,9 +15,9 @@ const StyledButton = styled.button(
 
 function Button({ $active, onPress, children }) {
     return (
-        <StyledButton $active={$active} onClick={onPress}>
+        <$Button $active={$active} onClick={onPress}>
             {children}
-        </StyledButton>
+        </$Button>
     );
 }
 

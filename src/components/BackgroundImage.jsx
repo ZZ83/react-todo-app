@@ -5,7 +5,7 @@ import bgMobileLight from "../assets/images/bg-mobile-light.jpg";
 import bgDesktopDark from "../assets/images/bg-desktop-dark.jpg";
 import bgDesktopLight from "../assets/images/bg-desktop-light.jpg";
 
-export const StyledBackgroundImage = styled.div(
+export const $BackgroundImage = styled.div(
     ({ theme }) => css`
         position: absolute;
         top: 0;
@@ -27,7 +27,7 @@ export const StyledBackgroundImage = styled.div(
 );
 
 function BackgroundImage() {
-    return <StyledBackgroundImage />;
+    return <$BackgroundImage />;
 }
 
 export default BackgroundImage;

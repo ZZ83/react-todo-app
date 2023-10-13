@@ -20,8 +20,8 @@ const $DynamicCheckBox = styled($StaticCheckBox)(
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        background: ${({ $active }) => ($active ? "linear-gradient(to bottom right, #55ddff, #c058f3)" : null)};
-        border: ${({ $active }) => ($active ? "none" : null)};
+        background: ${$active ? "linear-gradient(to bottom right, #55ddff, #c058f3)" : null};
+        border: ${$active ? "none" : null};
 
         &:hover {
             background-image: ${!$active
