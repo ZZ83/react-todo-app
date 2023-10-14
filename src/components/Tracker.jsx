@@ -55,8 +55,8 @@ const $Sort = styled.div(
 
 function Tracker({ sort, setSort, unsortedList, setUnsortedList, setDisplayedTodoItems }) {
     const all = { ...sort };
-    const activeTodos = [...unsortedList].filter((item) => item.completed === false);
-    const completedTodos = [...unsortedList].filter((item) => item.completed === true);
+    const activeTodos = [...unsortedList].filter((item) => item.isCompleted === false);
+    const completedTodos = [...unsortedList].filter((item) => item.isCompleted === true);
 
     function showAllTodos() {
         setDisplayedTodoItems([...unsortedList]);

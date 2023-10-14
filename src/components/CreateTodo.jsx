@@ -46,7 +46,7 @@ function CreateTodo({ unsortedList, setUnsortedList, displayedTodoItems, setDisp
             const todoItem = {
                 id: crypto.randomUUID(),
                 text: event.target.value,
-                completed: false,
+                isCompleted: false,
             };
             setUnsortedList([...unsortedList, todoItem]);
             setDisplayedTodoItems([...displayedTodoItems, todoItem]);

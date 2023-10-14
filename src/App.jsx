@@ -24,13 +24,13 @@ function App() {
     const [sort, setSort] = useState({ all: true, active: false, completed: false });
 
     function toggleCompleted(index) {
-        const item = [...displayedTodoItems];
-        if (displayedTodoItems[index].completed === false) {
-            item[index].completed = true;
-            setDisplayedTodoItems([...item]);
+        const todoItems = [...displayedTodoItems];
+        if (displayedTodoItems[index].isCompleted === false) {
+            todoItems[index].isCompleted = true;
+            setDisplayedTodoItems([...todoItems]);
         } else {
-            item[index].completed = false;
-            setDisplayedTodoItems([...item]);
+            todoItems[index].isCompleted = false;
+            setDisplayedTodoItems([...todoItems]);
         }
     }
 
@@ -51,10 +51,10 @@ function App() {
                         <TodoItem key={todoItem.id}>
                             <DynamicCheckBox
                                 index={index}
-                                active={todoItem.completed}
+                                active={todoItem.isCompleted}
                                 toggleCompleted={toggleCompleted}
                             />
-                            <TodoText completed={todoItem.completed}>{todoItem.text}</TodoText>
+                            <TodoText completed={todoItem.isCompleted}>{todoItem.text}</TodoText>
                             <RemoveTodoButton
                                 id={todoItem.id}
                                 sort={sort}
