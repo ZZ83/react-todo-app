@@ -53,13 +53,13 @@ const $Sort = styled.div(
     `
 );
 
-function Tracker({ sort, setSort, original, setOriginal, setTodo }) {
+function Tracker({ sort, setSort, unsortedList, setUnsortedList, setDisplayedTodoItems }) {
     const all = { ...sort };
-    const activeTodos = [...original].filter((item) => item.completed === false);
-    const completedTodos = [...original].filter((item) => item.completed === true);
+    const activeTodos = [...unsortedList].filter((item) => item.completed === false);
+    const completedTodos = [...unsortedList].filter((item) => item.completed === true);
 
     function showAllTodos() {
-        setTodo([...original]);
+        setDisplayedTodoItems([...unsortedList]);
         all.all = true;
         all.active = false;
         all.completed = false;
@@ -67,7 +67,7 @@ function Tracker({ sort, setSort, original, setOriginal, setTodo }) {
     }
 
     function showActiveTodos() {
-        setTodo([...activeTodos]);
+        setDisplayedTodoItems([...activeTodos]);
         all.all = false;
         all.active = true;
         all.completed = false;
@@ -75,7 +75,7 @@ function Tracker({ sort, setSort, original, setOriginal, setTodo }) {
     }
 
     function showCompletedTodos() {
-        setTodo([...completedTodos]);
+        setDisplayedTodoItems([...completedTodos]);
         all.all = false;
         all.active = false;
         all.completed = true;
@@ -84,11 +84,11 @@ function Tracker({ sort, setSort, original, setOriginal, setTodo }) {
 
     function removeCompletedTodos() {
         if (all.completed === true) {
-            setOriginal([...activeTodos]);
-            setTodo([]);
+            setUnsortedList([...activeTodos]);
+            setDisplayedTodoItems([]);
         } else {
-            setOriginal([...activeTodos]);
-            setTodo([...activeTodos]);
+            setUnsortedList([...activeTodos]);
+            setDisplayedTodoItems([...activeTodos]);
         }
     }
 

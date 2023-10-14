@@ -14,16 +14,16 @@ const $RemoveTodoButton = styled.svg(
     `
 );
 
-function RemoveTodoButton({ id, sort, original, setOriginal, todo, setTodo }) {
+function RemoveTodoButton({ id, sort, unsortedList, setUnsortedList, displayedTodoItems, setDisplayedTodoItems }) {
     function removeTodoItem() {
-        const newUnsortedList = [...original].filter((item) => item.id !== id);
-        const newSortedList = [...todo].filter((item) => item.id !== id);
+        const newUnsortedList = [...unsortedList].filter((item) => item.id !== id);
+        const newSortedList = [...displayedTodoItems].filter((item) => item.id !== id);
         if (sort.all === true) {
-            setOriginal([...newUnsortedList]);
-            setTodo([...newUnsortedList]);
+            setUnsortedList([...newUnsortedList]);
+            setDisplayedTodoItems([...newUnsortedList]);
         } else {
-            setOriginal([...newUnsortedList]);
-            setTodo([...newSortedList]);
+            setUnsortedList([...newUnsortedList]);
+            setDisplayedTodoItems([...newSortedList]);
         }
     }
 

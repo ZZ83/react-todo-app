@@ -40,7 +40,7 @@ const $Input = styled.input`
     }
 `;
 
-function CreateTodo({ original, setOriginal, todo, setTodo }) {
+function CreateTodo({ unsortedList, setUnsortedList, displayedTodoItems, setDisplayedTodoItems }) {
     function addTodoItem(event) {
         if (event.key === "Enter") {
             const todoItem = {
@@ -48,8 +48,8 @@ function CreateTodo({ original, setOriginal, todo, setTodo }) {
                 text: event.target.value,
                 completed: false,
             };
-            setOriginal([...original, todoItem]);
-            setTodo([...todo, todoItem]);
+            setUnsortedList([...unsortedList, todoItem]);
+            setDisplayedTodoItems([...displayedTodoItems, todoItem]);
             event.target.value = "";
         }
     }
