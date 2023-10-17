@@ -8,6 +8,7 @@ const $TodoText = styled.p(
         color: ${$completed ? theme.lineThroughColor : null};
         text-decoration: ${$completed ? "line-through" : "none"};
         letter-spacing: -0.17px;
+        pointer-events: none;
 
         @media (width >= 588px) {
             padding-right: 24px;

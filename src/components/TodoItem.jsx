@@ -25,8 +25,17 @@ const $TodoItem = styled.li(
     `
 );
 
-function TodoItem({ children }) {
-    return <$TodoItem draggable>{children}</$TodoItem>;
+function TodoItem({ dragStart, dragEnter, dragEnd, index, children }) {
+    return (
+        <$TodoItem
+            draggable
+            onDragStart={() => dragStart(index)}
+            onDragEnter={() => dragEnter(index)}
+            onDragEnd={() => dragEnd()}
+        >
+            {children}
+        </$TodoItem>
+    );
 }
 
 export default TodoItem;

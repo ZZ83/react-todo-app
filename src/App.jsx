@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./components/GlobalStyles";
 import BackgroundImage from "./components/BackgroundImage";
@@ -20,9 +20,6 @@ function App() {
 
     const [unsortedList, setUnsortedList] = useState([]);
     const [displayedTodoItems, setDisplayedTodoItems] = useState([]);
-
-    const [sort, setSort] = useState({ all: true, active: false, completed: false });
-
     function toggleCompleted(index) {
         const todoItems = [...displayedTodoItems];
         if (displayedTodoItems[index].isCompleted === false) {
@@ -32,6 +29,28 @@ function App() {
             todoItems[index].isCompleted = false;
             setDisplayedTodoItems([...todoItems]);
         }
+    }
+
+    const [sort, setSort] = useState({ all: true, active: false, completed: false });
+
+    let dragStartItem;
+    let dragOverItem;
+
+    function dragStart(index) {
+        dragStartItem = index;
+    }
+
+    function dragEnter(index) {
+        dragOverItem = index;
+    }
+
+    function dragEnd() {
+        const arrayCopy = [...displayedTodoItems];
+        const element = arrayCopy[dragStartItem];
+        arrayCopy.splice(dragStartItem, 1);
+        console.log(arrayCopy);
+        arrayCopy.splice(dragOverItem, 0, element);
+        setDisplayedTodoItems(arrayCopy);
     }
 
     return (
@@ -48,13 +67,21 @@ function App() {
                 />
                 <ul>
                     {displayedTodoItems.map((todoItem, index) => (
-                        <TodoItem key={todoItem.id}>
+                        <TodoItem
+                            key={todoItem.id}
+                            index={index}
+                            dragStart={dragStart}
+                            dragEnter={dragEnter}
+                            dragEnd={dragEnd}
+                        >
                             <DynamicCheckBox
                                 index={index}
                                 active={todoItem.isCompleted}
                                 toggleCompleted={toggleCompleted}
                             />
-                            <TodoText completed={todoItem.isCompleted}>{todoItem.text}</TodoText>
+                            <TodoText dragable="false" completed={todoItem.isCompleted}>
+                                {todoItem.text}
+                            </TodoText>
                             <RemoveTodoButton
                                 id={todoItem.id}
                                 sort={sort}
