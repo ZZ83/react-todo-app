@@ -45,12 +45,20 @@ function App() {
     }
 
     function dragEnd() {
-        const arrayCopy = [...displayedTodoItems];
-        const element = arrayCopy[dragStartItem];
-        arrayCopy.splice(dragStartItem, 1);
-        console.log(arrayCopy);
-        arrayCopy.splice(dragOverItem, 0, element);
-        setDisplayedTodoItems(arrayCopy);
+        const unsortedCopy = [...unsortedList];
+        const todoItemsCopy = [...displayedTodoItems];
+
+        const unsortedElement = unsortedCopy[dragStartItem];
+        const sortedElement = todoItemsCopy[dragStartItem];
+
+        unsortedCopy.splice(dragStartItem, 1);
+        todoItemsCopy.splice(dragStartItem, 1);
+
+        unsortedCopy.splice(dragOverItem, 0, unsortedElement);
+        todoItemsCopy.splice(dragOverItem, 0, sortedElement);
+
+        setUnsortedList(unsortedCopy);
+        setDisplayedTodoItems(todoItemsCopy);
     }
 
     return (
